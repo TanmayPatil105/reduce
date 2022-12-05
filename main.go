@@ -55,18 +55,18 @@ func main(){
 	} else if(os.Args[1] == "--clip" || os.Args[1] == "-c" ){
 		inputUrl,_ = clipboard.ReadAll()
 	}
-	if(checkUrl(inputUrl)){
-		postReq(inputUrl)
-	} else{
-		Box(RedText+"Invalid URL"+NormalText)
-	}
+	// if(checkUrl(inputUrl)){
+	postReq(inputUrl)
+	// } else{
+	// Box(RedText+"Invalid URL"+NormalText)
+	// }
+	// fmt.Printf("Original : "+ inputUrl)
 }
 
 func Box(url string){
 	Box := box.New(box.Config{Px: 5, Py: 2, Type: "Round",TitlePos:"Top", TitleColor:"Green",Color: "Cyan"})
  	Box.Print("URL",url)
 }
-
 
 func printAscii(){
 	fmt.Println(BoldGreenText)
@@ -83,6 +83,7 @@ func checkUrl(url string)bool{
     if err != nil {
         return false
     }
+	fmt.Println(resp.StatusCode)
     return resp.StatusCode == 200
 }
 

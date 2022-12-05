@@ -55,12 +55,7 @@ func main(){
 	} else if(os.Args[1] == "--clip" || os.Args[1] == "-c" ){
 		inputUrl,_ = clipboard.ReadAll()
 	}
-	// if(checkUrl(inputUrl)){
 	postReq(inputUrl)
-	// } else{
-	// Box(RedText+"Invalid URL"+NormalText)
-	// }
-	// fmt.Printf("Original : "+ inputUrl)
 }
 
 func Box(url string){
@@ -94,13 +89,15 @@ func postReq(inputUrl string){
 
 	requestBody := strings.NewReader(request)
 
+
 	response, err := http.Post(myUrl,"application/json",requestBody)
 
-	if err != nil{
-		fmt.Println("ERROR1")
-		// panic(err)
+
+	if !(err==nil) {
+		// Box(RedText+"Invalid URL"+NormalText)
 		return
 	}
+
 	defer response.Body.Close()
 
 	content , _ :=ioutil.ReadAll(response.Body)

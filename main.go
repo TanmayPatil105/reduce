@@ -56,6 +56,7 @@ func main(){
 		inputUrl,_ = clipboard.ReadAll()
 	}
 	postReq(inputUrl)
+
 }
 
 func Box(url string){
@@ -110,6 +111,10 @@ func postReq(inputUrl string){
         panic(err)
     }
 	url := "https://reduced.to/"  + dat["newUrl"].(string)
+
+	clipboard.WriteAll(url)
 	
 	Box(url)
+
+
 }

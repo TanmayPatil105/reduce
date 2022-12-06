@@ -15,4 +15,4 @@ jobs:
       - name: Build
         run: make build
       - name: Test
-        run: ./reduce < test
+        run: ./reduce < test/test1

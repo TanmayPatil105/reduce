@@ -1,2 +1,29 @@
-# reduced.to
-Command line URL shortner using https://reduced.to API
+## Command line URL shortener
+
+# How to test
+
+``` bash
+$ make
+```
+
+# Example
+
+```bash
+$ ./reduce --clip
+
+                    __                        __     
+   _____ ___   ____/ /__  __ _____ ___   ____/ /     
+  / ___// _ \ / __  // / / // ___// _ \ / __  /    
+ / /   /  __// /_/ // /_/ // /__ /  __// /_/ /     
+/_/    \___/ \__ _/ \__ _/ \___/ \___/ \__ _/  
+
+
+Enter the URL : 
+╭ URL ─────────────────────────────╮
+│                                  │
+│                                  │
+│     https://reduced.to/8hqeb     │
+│                                  │
+│                                  │
+╰──────────────────────────────────╯
+```

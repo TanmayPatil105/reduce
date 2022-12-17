@@ -3,8 +3,14 @@
 # How to test
 
 ``` bash
-$ make
+$ make 
 ```
+
+## Installation
+```bash
+$ make install
+```
+
 ## Usage
 - `-c` to copy reduced url to clipboard
 - `-b` to copy long url from clipboard

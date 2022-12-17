@@ -16,5 +16,7 @@ jobs:
         run: make build
       - name: Check version
         run: ./reduce -v
+      - name: Display help
+        run: ./reduce -h
       - name: Generate URL
         run: ./reduce < test/test1

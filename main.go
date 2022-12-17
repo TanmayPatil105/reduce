@@ -52,12 +52,25 @@ func main(){
 	clip := flag.Bool("b", false, "copy from clipboard")
 	copy := flag.Bool("c", false, "copy to clipboard")
 	showVersion := flag.Bool("v",false,"show version")
+	showHelp := flag.Bool("h",false,"show help")
 	flag.Parse()
 
 	var inputUrl string
 
 	if *showVersion{
 		fmt.Printf("reduced version %s\n", CurrentVersion)
+		os.Exit(0)
+	}
+
+	if *showHelp {
+		fmt.Printf("reduced is a command line URL shortener tool\n\n")
+		fmt.Printf("Usage: \n")
+		fmt.Printf("\t\treduce [arguments]")
+		fmt.Printf("\nThe commands are:\n\n")
+		fmt.Printf("\t\t-b\tcopy url from clipboard\n")
+		fmt.Printf("\t\t-c\tcopy shortened url to clipboard\n")
+		fmt.Printf("\t\t-v\tto display version\n")
+		fmt.Printf("\t\t-h\tto display help message\n\n")
 		os.Exit(0)
 	}
 

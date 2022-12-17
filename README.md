@@ -5,11 +5,21 @@
 ``` bash
 $ make
 ```
+## Usage
+- `-c` to copy reduced url to clipboard
+- `-b` to copy long url from clipboard
+- `-v` to show version
+- `-h` to display help message
+
 
 # Example
 
 ```bash
-$ ./reduce --clip
+$ ./reduce -v
+reduced version 0.0.1
+```
+```bash
+$ ./reduce
 
                     __                        __     
    _____ ___   ____/ /__  __ _____ ___   ____/ /     
@@ -18,7 +28,27 @@ $ ./reduce --clip
 /_/    \___/ \__ _/ \__ _/ \___/ \___/ \__ _/  
 
 
-Enter the URL : 
+Enter the URL : https://github.com/TanmayPatil105/reduced.to                    
+
+╭ URL ─────────────────────────────╮
+│                                  │
+│                                  │
+│     https://reduced.to/lcnw9     │
+│                                  │
+│                                  │
+╰──────────────────────────────────╯
+```
+
+```bash
+$ ./reduce -b
+
+                    __                        __     
+   _____ ___   ____/ /__  __ _____ ___   ____/ /     
+  / ___// _ \ / __  // / / // ___// _ \ / __  /    
+ / /   /  __// /_/ // /_/ // /__ /  __// /_/ /     
+/_/    \___/ \__ _/ \__ _/ \___/ \___/ \__ _/  
+
+
 ╭ URL ─────────────────────────────╮
 │                                  │
 │                                  │

@@ -20,5 +20,7 @@ jobs:
         run: reduce -v
       - name: Display help
         run: reduce -h
+      - name: Disable ascii art
+        run: reduce -d < test/test1
       - name: Generate URL
         run: reduce < test/test1 

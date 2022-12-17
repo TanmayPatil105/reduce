@@ -7,7 +7,7 @@ import (
 	"github.com/atotto/clipboard"
 )
 
-const CurrentVersion = "0.0.1"
+const CurrentVersion = "0.0.3"
 
 const (
 	NormalText       = "\033[0m" 

@@ -1,17 +1,20 @@
 package main
 
 import (
-	"fmt"
-	"os"
 	"encoding/json"
-	"io/ioutil"
+	"flag"
+	"fmt"
+	"io"
 	"net/http"
+	"os"
 	"strings"
+
 	"github.com/Delta456/box-cli-maker/v2"
 	"github.com/atotto/clipboard"
-	// "github.com/pborman/options"
+	// "github.com/go-delve/delve/pkg/version"
 )
 
+const CurrentVersion = "0.0.1"
 
 const (
 	NormalText       = "\033[0m" 
@@ -45,18 +48,35 @@ const (
 )
 
 func main(){
-	printAscii()
+
+	clip := flag.Bool("b", false, "copy from clipboard")
+	copy := flag.Bool("c", false, "copy to clipboard")
+	showVersion := flag.Bool("v",false,"show version")
+	flag.Parse()
 
 	var inputUrl string
-	if(len(os.Args)==1){
+
+	if *showVersion{
+		fmt.Printf("reduced version %s\n", CurrentVersion)
+		os.Exit(0)
+	}
+
+	printAscii()
+
+	if *clip {
+		inputUrl,_ = clipboard.ReadAll()
+	} else {
 		fmt.Printf("\nEnter the URL : " + GreenText) 
 		fmt.Scanln(&inputUrl)
-		fmt.Printf("\n") 
-	} else if(os.Args[1] == "--clip" || os.Args[1] == "-c" ){
-		inputUrl,_ = clipboard.ReadAll()
+		fmt.Printf("\n")
 	}
-	postReq(inputUrl)
 
+	url := postReq(inputUrl)
+
+	if *copy {
+		
+		clipboard.WriteAll(url)
+	}
 }
 
 func Box(url string){
@@ -74,16 +94,16 @@ func printAscii(){
 	fmt.Println(NormalText)
 }
 
-func checkUrl(url string)bool{
-    resp,err := http.Get(url)
-    if err != nil {
-        return false
-    }
-	fmt.Println(resp.StatusCode)
-    return resp.StatusCode == 200
-}
+// func checkUrl(url string)bool{
+//     resp,err := http.Get(url)
+//     if err != nil {
+//         return false
+//     }
+// 	fmt.Println(resp.StatusCode)
+//     return resp.StatusCode == 200
+// }
 
-func postReq(inputUrl string){
+func postReq(inputUrl string)string{
 	const myUrl = "https://reduced.to/api/v1/shortener"
 
 	var request string = "{ \"originalUrl\" : \"" + inputUrl + "\" }";
@@ -95,13 +115,13 @@ func postReq(inputUrl string){
 
 
 	if !(err==nil) {
-		// Box(RedText+"Invalid URL"+NormalText)
-		return
+		Box(RedText+"Invalid URL"+NormalText)
+		os.Exit(1)
 	}
 
 	defer response.Body.Close()
 
-	content , _ :=ioutil.ReadAll(response.Body)
+	content , _ :=io.ReadAll(response.Body)
 
 	data := []byte(content)
 
@@ -111,10 +131,8 @@ func postReq(inputUrl string){
         panic(err)
     }
 	url := "https://reduced.to/"  + dat["newUrl"].(string)
-
-	clipboard.WriteAll(url)
 	
 	Box(url)
 
-
+	return url
 }

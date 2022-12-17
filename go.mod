@@ -1,4 +1,4 @@
-module github.com/TanmayPatil105/reduced.to
+module github.com/TanmayPatil105/reduce
 
 go 1.19
 

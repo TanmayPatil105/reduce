@@ -35,7 +35,7 @@ $ ./reduce
 /_/    \___/ \__ _/ \__ _/ \___/ \___/ \__ _/  
 
 
-Enter the URL : https://github.com/TanmayPatil105/reduced.to                    
+Enter the URL : https://github.com/TanmayPatil105/reduce                  
 
 ╭ URL ─────────────────────────────╮
 │                                  │

@@ -1,5 +1,15 @@
+BINARY_NAME=reduce
+INSTALL_DIR=/usr/bin/
+
+all: build 
+
+install:
+	go build -o ${BINARY_NAME}	
+	sudo mv reduce ${INSTALL_DIR}
+
 build:
-	go build -o reduce
+	go build -o ${BINARY_NAME}
 
 clean:
-	- rm -f reduce 
+	go clean
+	rm ${BINARY_NAME}

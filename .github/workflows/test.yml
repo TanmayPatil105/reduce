@@ -14,9 +14,11 @@ jobs:
 
       - name: Build
         run: make build
+      - name: Install
+        run: make install
       - name: Check version
-        run: ./reduce -v
+        run: reduce -v
       - name: Display help
-        run: ./reduce -h
+        run: reduce -h
       - name: Generate URL
-        run: ./reduce < test/test1
+        run: reduce < test/test1 

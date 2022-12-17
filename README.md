@@ -15,6 +15,7 @@ $ make install
 - `-c` to copy reduced url to clipboard
 - `-b` to copy long url from clipboard
 - `-v` to show version
+- `-d` to disable ascii art
 - `-h` to display help message
 
 

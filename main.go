@@ -1,17 +1,10 @@
 package main
 
 import (
-	"encoding/json"
-	"flag"
 	"fmt"
-	"io"
-	"net/http"
+	"flag"
 	"os"
-	"strings"
-
-	"github.com/Delta456/box-cli-maker/v2"
 	"github.com/atotto/clipboard"
-	// "github.com/go-delve/delve/pkg/version"
 )
 
 const CurrentVersion = "0.0.1"
@@ -51,6 +44,7 @@ func main(){
 
 	clip := flag.Bool("b", false, "copy from clipboard")
 	copy := flag.Bool("c", false, "copy to clipboard")
+	ascii := flag.Bool("d", false,"display ascii art")
 	showVersion := flag.Bool("v",false,"show version")
 	showHelp := flag.Bool("h",false,"show help")
 	flag.Parse()
@@ -63,18 +57,13 @@ func main(){
 	}
 
 	if *showHelp {
-		fmt.Printf("reduced is a command line URL shortener tool\n\n")
-		fmt.Printf("Usage: \n")
-		fmt.Printf("\t\treduce [arguments]")
-		fmt.Printf("\nThe commands are:\n\n")
-		fmt.Printf("\t\t-b\tcopy url from clipboard\n")
-		fmt.Printf("\t\t-c\tcopy shortened url to clipboard\n")
-		fmt.Printf("\t\t-v\tto display version\n")
-		fmt.Printf("\t\t-h\tto display help message\n\n")
+		help()
 		os.Exit(0)
 	}
 
-	printAscii()
+	if ! *ascii {
+		printAscii()
+	}
 
 	if *clip {
 		inputUrl,_ = clipboard.ReadAll()
@@ -84,68 +73,10 @@ func main(){
 		fmt.Printf("\n")
 	}
 
-	url := postReq(inputUrl)
+	url := shorten(inputUrl)
 
 	if *copy {
-		
 		clipboard.WriteAll(url)
 	}
 }
 
-func Box(url string){
-	Box := box.New(box.Config{Px: 5, Py: 2, Type: "Round",TitlePos:"Top", TitleColor:"Green",Color: "Cyan"})
- 	Box.Print("URL",url)
-}
-
-func printAscii(){
-	fmt.Println(BoldGreenText)
-	fmt.Println("                    __                        __     ")
-	fmt.Println("   _____ ___   ____/ /__  __ _____ ___   ____/ /     ")
-	fmt.Println("  / ___// _ \\ / __  // / / // ___// _ \\ / __  /    ")
-	fmt.Println(" / /   /  __// /_/ // /_/ // /__ /  __// /_/ /     ")
-	fmt.Println("/_/    \\___/ \\__ _/ \\__ _/ \\___/ \\___/ \\__ _/  ")
-	fmt.Println(NormalText)
-}
-
-// func checkUrl(url string)bool{
-//     resp,err := http.Get(url)
-//     if err != nil {
-//         return false
-//     }
-// 	fmt.Println(resp.StatusCode)
-//     return resp.StatusCode == 200
-// }
-
-func postReq(inputUrl string)string{
-	const myUrl = "https://reduced.to/api/v1/shortener"
-
-	var request string = "{ \"originalUrl\" : \"" + inputUrl + "\" }";
-
-	requestBody := strings.NewReader(request)
-
-
-	response, err := http.Post(myUrl,"application/json",requestBody)
-
-
-	if !(err==nil) {
-		Box(RedText+"Invalid URL"+NormalText)
-		os.Exit(1)
-	}
-
-	defer response.Body.Close()
-
-	content , _ :=io.ReadAll(response.Body)
-
-	data := []byte(content)
-
-	var dat map[string]interface{}
-
-	if err := json.Unmarshal(data, &dat); err != nil {
-        panic(err)
-    }
-	url := "https://reduced.to/"  + dat["newUrl"].(string)
-	
-	Box(url)
-
-	return url
-}

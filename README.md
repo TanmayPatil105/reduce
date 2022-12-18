@@ -8,7 +8,7 @@ $ make
 
 ## Installation
 ```bash
-$ go install github.com/TanmayPatil105/reduce@v0.0.3
+$ go install github.com/TanmayPatil105/reduce@latest
 ```
 
 ## Usage

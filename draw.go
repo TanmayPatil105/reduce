@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
+	"time"
 	"github.com/Delta456/box-cli-maker/v2"
 )
 
@@ -11,7 +13,7 @@ func Box(url string,title string){
 }
 
 func printAscii(){
-	fmt.Println(BoldGreenText)
+	fmt.Println(selectRandom())
 	fmt.Println("                    __                        __     ")
 	fmt.Println("   _____ ___   ____/ /__  __ _____ ___   ____/ /     ")
 	fmt.Println("  / ___// _ \\ / __  // / / // ___// _ \\ / __  /    ")
@@ -20,3 +22,39 @@ func printAscii(){
 	fmt.Println(NormalText)
 }
 
+func selectRandom()string{
+	colors := make([]string, 0)
+	colors = append(colors,
+		NormalText,       
+		BlackText,        
+		RedText,        
+		GreenText,     
+		YellowText,       
+		BlueText,         
+		MagentaText,      
+		CyanText,         
+		WhiteText,        
+		DefaultColorText,  
+		BoldText,        
+		BoldBlackText,  
+		BoldRedText,    
+		BoldGreenText,
+		BoldYellowText, 
+		BoldBlueText,   
+		BoldMagentaText,
+		BoldCyanText,   
+		FaintText,  
+		FaintBlackText,
+		FaintRedText,  
+		FaintGreenText, 
+		FaintYellowText,
+		FaintBlueText,  
+		FaintMagentaText,
+		FaintCyanText,  
+		FaintWhiteText,
+		DefaultText )
+	
+	rand.Seed(time.Now().Unix())
+	return colors[rand.Intn(len(colors))]
+
+}

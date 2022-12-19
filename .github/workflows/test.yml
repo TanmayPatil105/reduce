@@ -22,8 +22,6 @@ jobs:
         run: reduce -h
       - name: Generate URL
         run: reduce < test/test1 
-      - name: Invalid URL
-        run: reduce < test/test2
 
   github:
     runs-on: ubuntu-latest

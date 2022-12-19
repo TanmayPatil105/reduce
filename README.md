@@ -8,7 +8,7 @@ $ make
 
 ## Installation
 ```bash
-$ go install github.com/TanmayPatil105/reduce@v0.0.3
+$ go install github.com/TanmayPatil105/reduce@latest
 ```
 
 ## Usage
@@ -22,11 +22,11 @@ $ go install github.com/TanmayPatil105/reduce@v0.0.3
 # Example
 
 ```bash
-$ ./reduce -v
+$ reduce -v
 reduced version 0.0.1
 ```
 ```bash
-$ ./reduce
+$ reduce
 
                     __                        __     
    _____ ___   ____/ /__  __ _____ ___   ____/ /     
@@ -47,7 +47,7 @@ Enter the URL : https://github.com/TanmayPatil105/reduce
 ```
 
 ```bash
-$ ./reduce -b
+$ reduce -b
 
                     __                        __     
    _____ ___   ____/ /__  __ _____ ___   ____/ /     

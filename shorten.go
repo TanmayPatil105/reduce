@@ -20,7 +20,7 @@ func shorten(inputUrl string)string{
 
 
 	if !(err==nil) {
-		Box(RedText+"Invalid URL"+NormalText)
+		Box(RedText+"Invalid URL"+NormalText,"ERROR")
 		os.Exit(1)
 	}
 
@@ -33,19 +33,19 @@ func shorten(inputUrl string)string{
 	var dat map[string]interface{}
 
 	if err := json.Unmarshal(data, &dat); err != nil {
-        panic(err)
+        Box(RedText+"Couldn't Parse JSON"+NormalText,"ERROR")
     }
 
 	short := dat["newUrl"]
 
 	if short==nil {
-		Box(RedText+"Invalid URL"+NormalText)
+		Box(RedText+"Invalid URL"+NormalText,"ERROR")
 		os.Exit(1)
 	}
 	
 	url := "https://reduced.to/"  + dat["newUrl"].(string)
 	
-	Box(url)
+	Box(url,"URL")
 
 	return url
 }

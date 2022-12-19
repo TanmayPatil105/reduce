@@ -5,9 +5,9 @@ import (
 	"github.com/Delta456/box-cli-maker/v2"
 )
 
-func Box(url string){
+func Box(url string,title string){
 	Box := box.New(box.Config{Px: 5, Py: 2, Type: "Round",TitlePos:"Top", TitleColor:"Green",Color: "Cyan"})
- 	Box.Print("URL",url)
+ 	Box.Print(title,url)
 }
 
 func printAscii(){

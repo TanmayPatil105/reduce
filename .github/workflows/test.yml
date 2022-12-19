@@ -22,7 +22,7 @@ jobs:
         run: reduce -h
       - name: Generate URL
         run: reduce < test/test1 
-      - namr: Invalid URL
+      - name: Invalid URL
         run: reduce < test/test2
 
   github:

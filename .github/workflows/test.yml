@@ -20,7 +20,20 @@ jobs:
         run: reduce -v
       - name: Display help
         run: reduce -h
-      - name: Disable ascii art
-        run: reduce -d < test/test1
       - name: Generate URL
         run: reduce < test/test1 
+      - namr: Invalid URL
+        run: reduce < test/test2
+
+  github:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.19
+      - name: Install latest
+        run: go install github.com/TanmayPatil105/reduce@latest
+      - name: Test
+        run: reduce -h

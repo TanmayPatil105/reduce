@@ -35,6 +35,14 @@ func shorten(inputUrl string)string{
 	if err := json.Unmarshal(data, &dat); err != nil {
         panic(err)
     }
+
+	short := dat["newUrl"]
+
+	if short==nil {
+		Box(RedText+"Invalid URL"+NormalText)
+		os.Exit(1)
+	}
+	
 	url := "https://reduced.to/"  + dat["newUrl"].(string)
 	
 	Box(url)

@@ -7,6 +7,16 @@ $ make
 ```
 
 ## Installation
+
+### brew
+```
+$ brew tap TanmayPatil105/tap
+```
+```
+$ brew install reduce
+```
+
+### go
 ```bash
 $ go install github.com/TanmayPatil105/reduce@latest
 ```

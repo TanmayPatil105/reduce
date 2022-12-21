@@ -1,11 +1,5 @@
 ## Command line URL shortener
 
-# How to test
-
-``` bash
-$ make 
-```
-
 ## Installation
 
 ### brew

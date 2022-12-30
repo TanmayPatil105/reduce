@@ -12,6 +12,7 @@ require (
 	github.com/pborman/getopt/v2 v2.0.0-20200816005738-fd0d075bf4de // indirect
 	github.com/pborman/options v1.3.0 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
+	github.com/skip2/go-qrcode v0.0.0-20200617195104-da1b6568686e // indirect
 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect
 	golang.org/x/sys v0.1.0 // indirect
 	golang.org/x/term v0.0.0-20221017184919-83659145692c // indirect

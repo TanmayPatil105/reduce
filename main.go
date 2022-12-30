@@ -1,9 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"flag"
+	"fmt"
 	"os"
+
 	"github.com/atotto/clipboard"
 )
 
@@ -44,7 +45,8 @@ func main(){
 
 	clip := flag.Bool("b", false, "copy from clipboard")
 	copy := flag.Bool("c", false, "copy to clipboard")
-	ascii := flag.Bool("d", false,"display ascii art")
+	ascii := flag.Bool("d", false,"disable ascii art")
+	qrCode := flag.Bool("q", false, "Converts into qr code")
 	showVersion := flag.Bool("v",false,"show version")
 	showHelp := flag.Bool("h",false,"show help")
 	flag.Parse()
@@ -78,5 +80,8 @@ func main(){
 	if *copy {
 		clipboard.WriteAll(url)
 	}
-}
 
+	if *qrCode {
+		createQr(url)
+	}
+}

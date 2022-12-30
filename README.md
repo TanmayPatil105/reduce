@@ -1,12 +1,16 @@
 ## Command line URL shortener
 
-# How to test
+## Installation
 
-``` bash
-$ make 
+### brew
+```
+$ brew tap TanmayPatil105/tap
+```
+```
+$ brew install reduce
 ```
 
-## Installation
+### go
 ```bash
 $ go install github.com/TanmayPatil105/reduce@latest
 ```

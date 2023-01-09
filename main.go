@@ -8,7 +8,7 @@ import (
 	"github.com/atotto/clipboard"
 )
 
-const CurrentVersion = "0.0.3"
+const CurrentVersion = "0.0.4"
 
 const (
 	NormalText       = "\033[0m" 
@@ -54,7 +54,7 @@ func main(){
 	var inputUrl string
 
 	if *showVersion{
-		fmt.Printf("reduced version %s\n", CurrentVersion)
+		fmt.Printf("reduce version %s\n", CurrentVersion)
 		os.Exit(0)
 	}
 
@@ -75,13 +75,19 @@ func main(){
 		fmt.Printf("\n")
 	}
 
-	url := shorten(inputUrl)
+	result := make(chan string)
+
+	go checkURL(inputUrl)
+	go shorten(inputUrl, result)
+
+	url := <-result
 
 	if *copy {
 		clipboard.WriteAll(url)
 	}
 
 	if *qrCode {
-		createQr(url)
+		createQr(url, flag.Arg(0))
 	}
+
 }

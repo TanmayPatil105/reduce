@@ -52,7 +52,7 @@ $ reduce -b
 ### Create QR-code for shortened URL ( `QR.png` default name for png file generated)
 
 ```bash
-$ reduce -q file_name
+$ reduce -b -q file_name
 
 
                     __                        __     

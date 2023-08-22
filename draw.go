@@ -2,17 +2,17 @@ package main
 
 import (
 	"fmt"
+	"github.com/Delta456/box-cli-maker/v2"
 	"math/rand"
 	"time"
-	"github.com/Delta456/box-cli-maker/v2"
 )
 
-func Box(url string,title string){
-	Box := box.New(box.Config{Px: 5, Py: 2, Type: "Round",TitlePos:"Top", TitleColor:"Green",Color: "Cyan"})
- 	Box.Print(title,url)
+func Box(url string, title string) {
+	Box := box.New(box.Config{Px: 5, Py: 2, Type: "Round", TitlePos: "Top", TitleColor: "Green", Color: "Cyan"})
+	Box.Print(title, url)
 }
 
-func printAscii(){
+func printAscii() {
 	fmt.Println(selectRandom())
 	fmt.Println("                    __                        __     ")
 	fmt.Println("   _____ ___   ____/ /__  __ _____ ___   ____/ /     ")
@@ -22,38 +22,38 @@ func printAscii(){
 	fmt.Println(NormalText)
 }
 
-func selectRandom()string{
+func selectRandom() string {
 	colors := make([]string, 0)
 	colors = append(colors,
-		NormalText,       
-		BlackText,        
-		RedText,        
-		GreenText,     
-		YellowText,       
-		BlueText,         
-		MagentaText,      
-		CyanText,         
-		WhiteText,        
-		DefaultColorText,  
-		BoldText,        
-		BoldBlackText,  
-		BoldRedText,    
+		NormalText,
+		BlackText,
+		RedText,
+		GreenText,
+		YellowText,
+		BlueText,
+		MagentaText,
+		CyanText,
+		WhiteText,
+		DefaultColorText,
+		BoldText,
+		BoldBlackText,
+		BoldRedText,
 		BoldGreenText,
-		BoldYellowText, 
-		BoldBlueText,   
+		BoldYellowText,
+		BoldBlueText,
 		BoldMagentaText,
-		BoldCyanText,   
-		FaintText,  
+		BoldCyanText,
+		FaintText,
 		FaintBlackText,
-		FaintRedText,  
-		FaintGreenText, 
+		FaintRedText,
+		FaintGreenText,
 		FaintYellowText,
-		FaintBlueText,  
+		FaintBlueText,
 		FaintMagentaText,
-		FaintCyanText,  
+		FaintCyanText,
 		FaintWhiteText,
-		DefaultText )
-	
+		DefaultText)
+
 	rand.Seed(time.Now().Unix())
 	return colors[rand.Intn(len(colors))]
 

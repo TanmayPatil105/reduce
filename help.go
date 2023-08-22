@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func help(){
+func help() {
 	fmt.Printf("reduce is a command line URL shortener tool\n\n")
 	fmt.Printf("Usage: \n")
 	fmt.Printf("\t\treduce [arguments]")

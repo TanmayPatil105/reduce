@@ -10,6 +10,9 @@ install:
 build:
 	go build -o ${BINARY_NAME}
 
+fmt:
+	gofmt -s -w .
+
 clean:
 	go clean
 	rm ${BINARY_NAME}

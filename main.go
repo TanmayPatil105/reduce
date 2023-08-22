@@ -11,7 +11,7 @@ import (
 const CurrentVersion = "0.0.4"
 
 const (
-	NormalText       = "\033[0m" 
+	NormalText       = "\033[0m"
 	BlackText        = "\033[30m"
 	RedText          = "\033[31m"
 	GreenText        = "\033[32m"
@@ -20,7 +20,7 @@ const (
 	MagentaText      = "\033[35m"
 	CyanText         = "\033[36m"
 	WhiteText        = "\033[37m"
-	DefaultColorText = "\033[39m" 
+	DefaultColorText = "\033[39m"
 	BoldText         = "\033[1m"
 	BoldBlackText    = "\033[1;30m"
 	BoldRedText      = "\033[1;31m"
@@ -38,22 +38,22 @@ const (
 	FaintMagentaText = "\033[2;35m"
 	FaintCyanText    = "\033[2;36m"
 	FaintWhiteText   = "\033[2;37m"
-	DefaultText      = "\033[22;39m" 
+	DefaultText      = "\033[22;39m"
 )
 
-func main(){
+func main() {
 
 	clip := flag.Bool("b", false, "copy from clipboard")
 	copy := flag.Bool("c", false, "copy to clipboard")
-	ascii := flag.Bool("d", false,"disable ascii art")
+	ascii := flag.Bool("d", false, "disable ascii art")
 	qrCode := flag.Bool("q", false, "Converts into qr code")
-	showVersion := flag.Bool("v",false,"show version")
-	showHelp := flag.Bool("h",false,"show help")
+	showVersion := flag.Bool("v", false, "show version")
+	showHelp := flag.Bool("h", false, "show help")
 	flag.Parse()
 
 	var inputUrl string
 
-	if *showVersion{
+	if *showVersion {
 		fmt.Printf("reduce version %s\n", CurrentVersion)
 		os.Exit(0)
 	}
@@ -63,14 +63,14 @@ func main(){
 		os.Exit(0)
 	}
 
-	if ! *ascii {
+	if !*ascii {
 		printAscii()
 	}
 
 	if *clip {
-		inputUrl,_ = clipboard.ReadAll()
+		inputUrl, _ = clipboard.ReadAll()
 	} else {
-		fmt.Printf("\nEnter the URL : " + GreenText) 
+		fmt.Printf("\nEnter the URL : " + GreenText)
 		fmt.Scanln(&inputUrl)
 		fmt.Printf("\n")
 	}
